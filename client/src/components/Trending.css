@@ -1,0 +1,81 @@
+/* ------------Trending Items--------- */
+.trendings {
+  padding: 1rem 0;
+}
+
+.trending-inner {
+  display: flex;
+  justify-content: space-between;
+}
+.trending-item {
+  padding: 1rem;
+  width: 33rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+.item-1 {
+  background: var(--white-color);
+}
+.item-1 h2,
+.item-1 p {
+  margin-bottom: 1rem;
+}
+.item-2 {
+  background: url("./img/landing.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: var(--white-color);
+}
+.item-2 h2 {
+  margin-top: 15rem;
+  font-size: 2.5rem;
+}
+.item-1,
+.item-2,
+.item-3 > div {
+  box-shadow: 0 3px 5px #ddd;
+  border-radius: 3px;
+}
+.item-3 > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #fff;
+  text-align: left;
+}
+.item-3 > div img {
+  width: 8rem;
+  margin-right: 2rem;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 425px) {
+  
+  .item-2 h2 {
+    margin-top: 5rem;
+  }
+  .trending-inner {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .trending-item {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .trending-inner {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .trending-item {
+    width: 100%;
+  }
+
+  .item-2 h2 {
+    margin-top: 2rem;
+  }
+}

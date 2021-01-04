@@ -1,0 +1,95 @@
+/* ---------Header styles ------------ */
+.main-header {
+  background: var(--white-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.sub-header {
+  background: var(--white-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid #e6e6e6;
+  padding: 0 4rem;
+}
+.sub-header > div span i {
+  margin-right: 1.5rem;
+}
+.main-header .search input {
+  background: #fff;
+  padding: 1rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 5rem;
+  width: 25rem;
+  outline: none;
+  box-shadow: 0 1px 6px 0 solid #000;
+  transition: all 0.2s ease;
+}
+.main-header .search input:focus {
+  width: 30rem
+}
+.logo {
+  color: var(--text-dark);
+  font-weight: bold;
+}
+.client-details,
+.sub-header ul,
+.sub-header .faq {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.client-details > div,
+.sub-header ul li {
+  margin: 1rem;
+}
+.sub-header .faq > div {
+  border-left: 1px solid #e6e6e6;
+  width: 12rem;
+  text-align: center;
+}
+.sub-header .faq > div:not(:last-child) {
+  border-right: 1px solid #e6e6e6;
+}
+.sub-header select {
+  padding: 1.5rem;
+  background: #fff;
+  width: 100%;
+  border: none;
+  border-radius: none;
+  outline: none;
+  box-shadow: 0 1px 6px 0 solid #000;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+ .main-header,
+  .sub-header {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media screen and (max-width: 425px) {
+ 
+  .sub-header,
+  .main-header {
+    padding: 1rem;
+  }
+  .sub-header .faq > div:last-child {
+    display: none;
+  }
+  .item-2 h2 {
+    margin-top: 5rem;
+  }
+  .client-details > .cart {
+    margin: 0.3rem;
+  }
+  .sub-header nav {
+    display: none;
+  }
+}

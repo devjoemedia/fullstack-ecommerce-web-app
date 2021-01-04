@@ -1,0 +1,192 @@
+:root {
+  --primary-color: #0078ff;
+  --secondary-color: #ff8f00;
+  --white-color: #fff;
+
+  --text-light: #808080;
+  --text-dark: #333;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 10px;
+}
+body {
+  font-size: 1.6rem;
+  font-family: "Roboto Condensed", sans-serif;
+  color: var(--text-light);
+  background: #f3f0f0;
+  line-height: 1.6;
+}
+/* ------General Styles-------- */
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+  color: var(--text-light);
+}
+li {
+  list-style: none;
+}
+img {
+  width: 100%;
+  display: block;
+}
+
+/*  ------main Area ---------- */
+main {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .main-header,
+  .sub-header {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  main {
+    padding: 1rem 2rem;
+    display: block;
+  }
+  .banner {
+    padding: 0;
+  }
+  .sidebar {
+    width: 100%;
+    display: none;
+  }
+  .products {
+    width: 90%;
+    margin: auto;
+  }
+  .product .navBar {
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  main {
+    padding: 1rem;
+  }
+  .search {
+    display: none;
+  }
+  .sub-header,
+  .main-header {
+    padding: 1rem;
+  }
+  .sub-header .faq > div:last-child {
+    display: none;
+  }
+  .item-2 h2 {
+    margin-top: 5rem;
+  }
+  .client-details > .cart {
+    margin: 0.3rem;
+  }
+  .sub-header nav {
+    display: none;
+  }
+ 
+  .trending-inner {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .trending-item {
+    width: 100%;
+  }
+  .products-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .products .navBar {
+    padding: 0 1rem;
+  }
+  .products .navBar ul li {
+    margin-right: 0;
+    border-bottom: none;
+  }
+  .products .navBar ul li a {
+    padding: 0.3px;
+  }
+  .main-footer > div,
+  .sub-footer > div {
+    text-align: center;
+    flex-direction: column;
+  }
+  .main-footer h2,
+  .main-footer ul {
+    margin-bottom: 1.5rem;
+  }
+  .sub-footer .container > div {
+    margin-bottom: 1.5rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  main {
+    padding: 1rem;
+  }
+
+  .trending-inner {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .trending-item {
+    width: 100%;
+  }
+  .products-inner {
+    display: block;
+  }
+
+  .item-2 h2 {
+    margin-top: 2rem;
+  }
+}
+.scroll-top {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: #0078ff;
+  position: fixed;
+  bottom: 3rem;
+  right: 5rem;
+  display: none;
+  color: #fff;
+  text-align: center;
+}
+.scroll-ctn {
+  transition: all 5s ease-in;
+  position: relative;
+}
+.scroll-top i {
+  font-size: 3rem;
+  margin-top: 1rem;
+}
+#loader {
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  color: #fff;
+  display: block;
+  display: grid;
+  place-items: center;
+  background: #0078ff;
+  position: fixed;
+}

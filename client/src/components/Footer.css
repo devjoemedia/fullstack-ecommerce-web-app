@@ -1,0 +1,35 @@
+/* FOOTER SYLES */
+footer {
+  background: var(--white-color);
+  padding: 2rem;
+}
+.main-footer,
+.sub-footer {
+  box-shadow: 0 1px 2px #ddd;
+}
+.main-footer {
+  margin-bottom: 2px;
+}
+.main-footer .social-icons span i,
+.sub-footer span i {
+  margin-right: 2rem;
+  font-size: 2rem;
+}
+.sub-footer p {
+  display: inline-block;
+  margin-right: 2rem;
+}
+.main-footer > div,
+.sub-footer > div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.main-footer ul li {
+  display: inline-block;
+  margin-right: 2rem;
+}
+.main-footer h2,
+.main-footer ul li a {
+  color: #000;
+}

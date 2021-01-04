@@ -1,0 +1,29 @@
+.sidebar {
+  width: 20%;
+}
+.sidebar ul {
+  margin-bottom: 2rem;
+}
+.sidebar ul li {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  box-shadow: 0 1px 2px #ddd;
+  background: var(--white-color);
+  margin-bottom: 1px;
+}
+.sidebar ul li p span {
+  margin-right: 2rem;
+}
+.sidebar .add {
+  height: 30rem;
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 1px 3px #ddd;
+  background: var(--white-color);
+}
+.sidebar .add h2 {
+  margin: 8rem 0 3rem 0;
+}
