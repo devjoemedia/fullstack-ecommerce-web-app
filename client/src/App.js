@@ -2,6 +2,8 @@ import './App.css';
 import Header from './components/Header'
 import Footer from './components/Footer';
 import Home from './components/Home';
+import Signup from './components/Signup';
+import Login from './components/Login';
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,6 +23,12 @@ function App() {
           </Route>
           <Route path="/checkout">
             <Cart />
+          </Route>
+          <Route path="/register">
+            <Signup />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/">
             <Home />
