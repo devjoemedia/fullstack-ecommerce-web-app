@@ -1,12 +1,26 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { useStateValue } from "./contextAPI/StateProvider";
 import Item from "./Item";
 import "./Products.css";
+import axios from './axios';
 
 function Products() {
-  const [{productsData}, dispatch] = useStateValue();
+  // const [{productsData}, dispatch] = useStateValue();
+  const [products, setProducts]= useState([]);
   
+useEffect(()=>{
+  const getProducts = async ()=> {
+    try {
+      const {data} = await axios.get('/products');
+      setProducts(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  getProducts();
+},[])
+
   return (
     <div className="products">
       <nav className="navBar">
@@ -26,13 +40,14 @@ function Products() {
         </span>
       </nav>
       <div className="products-inner">
-        {productsData.map((product) => (
+        {products?.map((product) => (
           <Item
             key={product.id}
             name={product.name}
             price={product.price}
             ratingsAvg={product.ratingsAvg}
             id={product.id}
+            image={product.image}
           />
         ))}
       </div>

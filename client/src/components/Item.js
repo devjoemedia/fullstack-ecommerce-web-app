@@ -12,7 +12,7 @@ function Item({name,id, image,price,ratinsAvg}) {
             </div>
             <img src={image} alt="Item-one" />
               <Link
-                to={`/products/${id}`}
+                to={`/product/${id}`}
                 className="product-title"
               >
                 {name}

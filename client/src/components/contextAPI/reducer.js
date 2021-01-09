@@ -1,31 +1,14 @@
+
 export const initialState = {
   cartCount: 0,
+  subTotal: 0,
   items: [],
-  productsData: [
-    {
-      id: 1,
-      name: "Infinx Hot 11",
-      price: 22333.42,
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. CorruptiLorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti",
-      image: "/img/item-2.png",
-      ratingsAvg: 5.0,
-    },
-    {
-      id: 2,
-      name: "Iphone 11 pro",
-      price: 44333.42,
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. CorruptiLorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti",
-      image: "/img/item-5.png",
-      ratingsAvg: 4.5,
-    },
-  ],
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_ITEM":
+      
       return {
         ...state,
         payload: action.payload,

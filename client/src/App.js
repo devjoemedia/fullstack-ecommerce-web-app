@@ -11,6 +11,8 @@ import {
 } from "react-router-dom";
 import Cart from './components/Cart';
 import ProductPage from './components/ProductPage';
+import Checkout from './components/Checkout';
+import CheckoutSuccess from './components/CheckoutSuccess';
 
 function App() {
   return (
@@ -18,11 +20,20 @@ function App() {
       <Router>
       <Header />
         <Switch>
-          <Route path="/products/:prodId">
+          <Route path="/product/:prodId">
             <ProductPage />
           </Route>
-          <Route path="/checkout">
+          <Route path="/cart">
             <Cart />
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
+          </Route>
+          <Route path="/checkout/success">
+            <CheckoutSuccess />
+          </Route>
+          <Route path="/checkout/cancel">
+            <h1>payment not successful</h1>
           </Route>
           <Route path="/register">
             <Signup />

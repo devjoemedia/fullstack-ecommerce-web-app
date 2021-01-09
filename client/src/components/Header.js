@@ -16,7 +16,7 @@ export default function Header() {
           <input type="text" className="search-input" placeholder="Search..." />
         </div>
         <div className="client-details">
-          <Link to="/checkout" >
+          <Link to="/cart" >
             <span> <i className="fas fa-shopping-cart"></i></span>
             <span> {cartCount} Items</span>
           </Link>

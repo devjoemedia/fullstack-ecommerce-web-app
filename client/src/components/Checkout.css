@@ -1,0 +1,22 @@
+.checkout {
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 0 1px 3px #ddd;
+  background: var(--white-color);
+}
+
+.checkout .btn {
+  padding: .8rem 1.3rem;
+  color: #fff;
+  outline: none;
+  border: none;
+  background: #444;
+  margin-right: 2rem;
+}
+
+.checkout__payWith--momo, .checkout__payWith--card {
+  margin-bottom: 2rem;
+}
+.checkout__payWith--momo p, .checkout__payWith--card p {
+  padding: 1rem 0;
+}

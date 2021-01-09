@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useStateValue } from "./contextAPI/StateProvider";
 import "./Product.css";
+import axios from './axios'
 
-function Product({ name, price, pQty, description, id }) {
+function Product({ name, price, pQty, description, id,image }) {
   const [state, dispatch] = useStateValue();
+  const [products, setProducts] = useState([])
   let { prodId } = useParams();
   prodId = prodId * 1;
 
+  useEffect(()=>{
+    const getProducts = async ()=> {
+      try {
+        const {data} = await axios.get('/products');
+        setProducts(data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getProducts();
+  },[])
   const addToCart = () => {
     let cartItem ;
     cartItem = state.items.find((product) => product.id === prodId);
   
     if (!cartItem) {
-      cartItem = state.productsData.find((product) => product.id === prodId);
+      cartItem = products.find((product) => product.id === prodId);
       let qty = 1;
       let totalPrice = cartItem.price * qty;
 
+      
       dispatch({
         type: "ADD_ITEM",
         payload: {
@@ -34,7 +48,7 @@ function Product({ name, price, pQty, description, id }) {
   return (
     <div className="singleProduct">
       <div className="singleProduct__image">
-        <img src="/img/item-5.png" alt="" />
+        <img src={image} alt="" />
       </div>
       <div className="singleProduct__info">
         <div className="singleProduct__info--header">

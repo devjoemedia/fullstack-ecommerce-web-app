@@ -3,27 +3,25 @@ import { useParams } from "react-router-dom";
 import { useStateValue } from "./contextAPI/StateProvider";
 import Product from "./Product";
 import "./Product.css";
+import axios from './axios'
 
 function ProductPage() {
   const [{ productsData, items }, dispatch] = useStateValue();
-  const [productInfo, setProductInfo] = useState();
+  const [productInfo, setProductInfo] = useState([]);
   let { prodId } = useParams();
   prodId = prodId * 1;
 
-  
-  useEffect(() => {
-    const getProductDetails = () => {
-      productsData.forEach((product) => {
-        if (product.id === prodId) {
-          setProductInfo(product);
-          console.log(items)
-        }
-      });
-    };
-    
-    getProductDetails()
-     
-  }, [prodId, productInfo, productsData, items]);
+  useEffect(()=>{
+    const getProducts = async ()=> {
+      try {
+        const {data} = await axios.get('/product/'+ prodId);
+        setProductInfo(data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getProducts();
+  },[prodId]);
 
   return (
     <div className="container">
@@ -33,6 +31,7 @@ function ProductPage() {
         price={productInfo?.price}
         description={productInfo?.description}
         pQty={productInfo?.pQty}
+        image={productInfo.image}
       />
 
       <div className="similar__products">

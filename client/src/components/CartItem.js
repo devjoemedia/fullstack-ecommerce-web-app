@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useStateValue } from "./contextAPI/StateProvider";
 
-function CartItem({ name, price, pQty, id, totalPrice }) {
+function CartItem({ name, price, pQty, id, totalPrice,image }) {
   const [qty, setQty] = useState(1);
   const [state, dispatch] = useStateValue();
   let prodId = id;
@@ -50,7 +50,7 @@ function CartItem({ name, price, pQty, id, totalPrice }) {
   return (
     <li className="cart__item">
       <div className="cart__item--info">
-        <img src="/img/item-5.png" alt="" />
+        <img src={image} alt="" />
         <p>{name}</p>
       </div>
       <div className="cart__item--qty">
@@ -61,7 +61,7 @@ function CartItem({ name, price, pQty, id, totalPrice }) {
         <button className="inc" onClick={incQty}>
           +
         </button>
-      </div>
+      </div>  
       <div className="cart__item--price">
         <h3>{totalPrice}</h3>
       </div>

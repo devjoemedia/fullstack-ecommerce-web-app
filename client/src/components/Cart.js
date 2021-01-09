@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Cart.css";
-import CheckoutForm from "./CheckoutForm";
+import CheckoutForm from "./Checkout";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CartItem from "./CartItem";
@@ -14,8 +14,16 @@ const stripePromise = loadStripe(
 function Cart() {
   const [{ cartCount, items }, dispatch] = useStateValue();
 
-  
-
+  let stotal = 0;
+  if (items.length > 0) {
+    items.forEach((item) => {
+      // stotal = stotal * 1;
+      item.totalPrice = item.totalPrice * 1;
+      stotal = stotal + item.totalPrice;
+    });
+  } else {
+    stotal = 0;
+  }
   return (
     <div className="container">
       <div className="cart">
@@ -29,21 +37,18 @@ function Cart() {
                 name={item.name}
                 price={item.price}
                 pQty={item.pQty}
+                image={item.image}
                 totalPrice={item.totalPrice}
               />
             ))}
             <div className="cart__item">
-              <Link to="/" >
-                Continue Shoping
-              </Link>
-              <p>Subtotal: 333,200.23</p>
+              <Link to="/">Continue Shoping</Link>
+            <Link to="/checkout" className="btn">
+              checkout
+             </Link> 
+              <p>Subtotal: {stotal}</p>
             </div>
           </ul>
-          <div className="checkout">
-            <Elements stripe={stripePromise}>
-              <CheckoutForm />
-            </Elements>
-          </div>
         </div>
       </div>
     </div>
