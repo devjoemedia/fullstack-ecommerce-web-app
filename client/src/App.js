@@ -15,6 +15,7 @@ import Checkout from './components/Checkout';
 import CheckoutSuccess from './components/CheckoutSuccess';
 
 function App() {
+
   return (
     <div className="app">
       <Router>
@@ -29,10 +30,11 @@ function App() {
           <Route path="/checkout">
             <Checkout />
           </Route>
-          <Route path="/checkout/success">
+          <Route path="/checkout/:success=true">
+            <h1>working</h1>
             <CheckoutSuccess />
           </Route>
-          <Route path="/checkout/cancel">
+          <Route path="/checkout/:canceled=true">
             <h1>payment not successful</h1>
           </Route>
           <Route path="/register">

@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { GlobalStateProvider } from './components/contextAPI/StateProvider';
-import reducer, { initialState } from './components/contextAPI/reducer';
+// import { GlobalStateProvider } from './components/contextAPI/StateProvider';
+// import reducer, { initialState } from './components/contextAPI/reducer';
+import CartContextProvider from './components/contextAPI/cartContext';
+import { cartReducer, initialState } from './components/contextAPI/cartReducer';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStateProvider initailState={initialState} reducer={reducer} >
+    <CartContextProvider initailState={initialState} reducer={cartReducer} >
       <App />
-    </GlobalStateProvider>
+    </CartContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

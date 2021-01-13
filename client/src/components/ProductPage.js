@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useStateValue } from "./contextAPI/StateProvider";
 import Product from "./Product";
 import "./Product.css";
 import axios from './axios'
+import { StateValue } from "./contextAPI/cartContext";
 
 function ProductPage() {
-  const [{ productsData, items }, dispatch] = useStateValue();
+  const {state: { productsData, items }, dispatch} = StateValue();
   const [productInfo, setProductInfo] = useState([]);
   let { prodId } = useParams();
   prodId = prodId * 1;

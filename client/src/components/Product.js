@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useStateValue } from "./contextAPI/StateProvider";
 import "./Product.css";
 import axios from './axios'
+import { StateValue } from "./contextAPI/cartContext";
 
 function Product({ name, price, pQty, description, id,image }) {
-  const [state, dispatch] = useStateValue();
+  const {state, dispatch} = StateValue();
+  
   const [products, setProducts] = useState([])
   let { prodId } = useParams();
   prodId = prodId * 1;
@@ -37,7 +38,9 @@ function Product({ name, price, pQty, description, id,image }) {
           cartCount: (state.cartCount += 1),
           items: state.items.push({...cartItem,pQty:qty,totalPrice}),
         },
+        
       });
+      localStorage.setItem('items', JSON.stringify( state.items))
     } else {
       console.log('Item already in cart!');
     }

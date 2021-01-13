@@ -1,12 +1,10 @@
 import React,{useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import { useStateValue } from "./contextAPI/StateProvider";
 import Item from "./Item";
 import "./Products.css";
 import axios from './axios';
 
 function Products() {
-  // const [{productsData}, dispatch] = useStateValue();
   const [products, setProducts]= useState([]);
   
 useEffect(()=>{

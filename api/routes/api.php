@@ -17,4 +17,4 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::patch('/product/{id}', [ProductController::class, 'update']);
 Route::delete('/product/{id}', [ProductController::class, 'destroy']);
 
-Route::post('/payment', [PaymentController::class, 'payWithCard']);
+Route::post('/pay-with-card', [PaymentController::class, 'payWithCard']);

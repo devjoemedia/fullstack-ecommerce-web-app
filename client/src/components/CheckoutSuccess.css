@@ -5,6 +5,8 @@
   background: var(--white-color);
   display: grid;
   place-items: center;
+  height: 70vh;
+  text-align: center;
 }
 
 .checkoutSuccess h1 {

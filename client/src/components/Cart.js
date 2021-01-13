@@ -1,29 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "./Cart.css";
-import CheckoutForm from "./Checkout";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import CartItem from "./CartItem";
-import { useStateValue } from "./contextAPI/StateProvider";
 import { Link } from "react-router-dom";
+import { StateValue } from "./contextAPI/cartContext";
 
-const stripePromise = loadStripe(
-  "pk_test_51GzSODEDr9DWjj2gPMLSz1OtjigNlN7XcXOwKoEu0BtOghzQVyZSXlYneJen6Rhy1pv0RhT9WWyrSbxOxQDNE0cF00C0c2cRig"
-);
+
 
 function Cart() {
-  const [{ cartCount, items }, dispatch] = useStateValue();
+  const [{ cartCount, items }, dispatch] = StateValue();
 
-  let stotal = 0;
-  if (items.length > 0) {
-    items.forEach((item) => {
-      // stotal = stotal * 1;
-      item.totalPrice = item.totalPrice * 1;
-      stotal = stotal + item.totalPrice;
-    });
-  } else {
-    stotal = 0;
-  }
+  // useEffect(()=>{
+  //   console.log('items',items);
+  // },[items])
+  // let stotal = 0;
+  // if (items.length > 0) {
+  //   items.forEach((item) => {
+  //     // stotal = stotal * 1;
+  //     item.totalPrice = item.totalPrice * 1;
+  //     stotal = stotal + item.totalPrice;
+  //   });
+  // } else {
+  //   stotal = 0;
+  // }
   return (
     <div className="container">
       <div className="cart">
@@ -46,7 +44,7 @@ function Cart() {
             <Link to="/checkout" className="btn">
               checkout
              </Link> 
-              <p>Subtotal: {stotal}</p>
+              <p>Subtotal: 234234</p>
             </div>
           </ul>
         </div>

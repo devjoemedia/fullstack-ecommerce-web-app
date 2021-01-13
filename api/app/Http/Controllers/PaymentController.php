@@ -9,7 +9,6 @@ class PaymentController extends Controller
     public function payWithCard(Request $request)
     {
         Stripe::setApiKey('sk_test_0PVEGhvryaUeiiRZi7wXkoT800weCuNDAi');
-        // return $request->amount;
 
         $YOUR_DOMAIN = 'http://localhost:3000/checkout';
 
@@ -20,15 +19,15 @@ class PaymentController extends Controller
               'currency' => 'usd',
               'unit_amount' => $request->amount,
               'product_data' => [
-                'name' => 'Stubborn Attachments',
+                'name' => 'EasyBuy Online Store',
                 'images' => ["https://i.imgur.com/EHyR2nP.png"],
               ],
             ],
             'quantity' => 1,
           ]],
           'mode' => 'payment',
-          'success_url' => $YOUR_DOMAIN . '/success',
-          'cancel_url' => $YOUR_DOMAIN . '/canceled',
+          'success_url' => $YOUR_DOMAIN . '?success=true',
+          'cancel_url' => $YOUR_DOMAIN . '?canceled=true',
         ]);
         return $checkout_session;
     }

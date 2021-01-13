@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useStateValue } from "./contextAPI/StateProvider";
+import { StateValue } from "./contextAPI/cartContext";
 
 function CartItem({ name, price, pQty, id, totalPrice,image }) {
   const [qty, setQty] = useState(1);
-  const [state, dispatch] = useStateValue();
+  const [state, dispatch] = StateValue();
   let prodId = id;
   const removeFromCart = () => {
     let cartItem ; 

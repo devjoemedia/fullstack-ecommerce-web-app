@@ -1,14 +1,13 @@
-
+let items = JSON.parse( localStorage.getItem('items') || '[]');
 export const initialState = {
-  cartCount: 0,
+  cartCount: items.length,
   subTotal: 0,
-  items: [],
+  items
 };
 
-export const reducer = (state, action) => {
+export const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_ITEM":
-      
       return {
         ...state,
         payload: action.payload,
@@ -61,4 +60,4 @@ export const reducer = (state, action) => {
   }
 };
 
-export default reducer;
+// export default cartReducer;

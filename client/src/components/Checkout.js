@@ -12,8 +12,8 @@ function CheckoutForm() {
     const stripe = await stripePromise;
 
     // Call your backend to create the Checkout Session
-    const { data: session } = await axios.post("/payment", {
-      amount: 1234 * 100,
+    const { data: session } = await axios.post("/pay-with-card", {
+      amount: 24 * 100,
     });
     // Reidrect to stripe hosted form
     const result = await stripe.redirectToCheckout({
