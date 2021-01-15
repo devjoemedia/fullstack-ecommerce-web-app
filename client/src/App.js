@@ -17,28 +17,28 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route path="/product/:prodId">
+          <Route exact path="/product/:prodId">
             <ProductPage />
           </Route>
-          <Route path="/cart">
+          <Route exact path="/cart">
             <Cart />
           </Route>
-          <Route path="/checkout/success">
+          <Route exact path="/checkout/success">
             <CheckoutSuccess />
           </Route>
-          <Route path="/checkout/canceled">
+          <Route exact path="/checkout/canceled">
             <h1>payment not successful</h1>
           </Route>
-          <Route path="/checkout">
+          <Route exact path="/checkout">
             <Checkout />
           </Route>
-          <Route path="/register">
+          <Route exact path="/register">
             <Signup />
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <Login />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
           </Route>
           <Route component={NotFound} />

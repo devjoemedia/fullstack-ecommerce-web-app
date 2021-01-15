@@ -1,9 +1,12 @@
 import React from "react";
+import "./NotFound.css";
 
 function NotFound() {
   return (
-    <div>
-      <h1>Not Found!</h1>
+    <div className="container">
+      <div className="notfound">
+        <h1>Page Not Found!</h1>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.notfound {
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 0 1px 3px #ddd;
+  background: var(--white-color);
+  color: black;
+  display: grid;
+  place-items: center;
+  height: 60vh;
+  text-align: center;
+}
