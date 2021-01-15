@@ -17,7 +17,8 @@ class PaymentController extends Controller
           'line_items' => [[
             'price_data' => [
               'currency' => 'usd',
-              'unit_amount' => $request->amount,
+              'unit_amount' => 5,
+              // 'unit_amount' => $request->amount,
               'product_data' => [
                 'name' => 'EasyBuy Online Store',
                 'images' => ["https://i.imgur.com/EHyR2nP.png"],
@@ -26,8 +27,8 @@ class PaymentController extends Controller
             'quantity' => 1,
           ]],
           'mode' => 'payment',
-          'success_url' => $YOUR_DOMAIN . '?success=true',
-          'cancel_url' => $YOUR_DOMAIN . '?canceled=true',
+          'success_url' => $YOUR_DOMAIN . '/success',
+          'cancel_url' => $YOUR_DOMAIN . '/canceled',
         ]);
         return $checkout_session;
     }

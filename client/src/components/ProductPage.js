@@ -2,26 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Product from "./Product";
 import "./Product.css";
-import axios from './axios'
-import { StateValue } from "./contextAPI/cartContext";
+import axios from "./axios";
 
 function ProductPage() {
-  const {state: { productsData, items }, dispatch} = StateValue();
   const [productInfo, setProductInfo] = useState([]);
   let { prodId } = useParams();
   prodId = prodId * 1;
 
-  useEffect(()=>{
-    const getProducts = async ()=> {
+  useEffect(() => {
+    const getProducts = async () => {
       try {
-        const {data} = await axios.get('/product/'+ prodId);
+        const { data } = await axios.get("/product/" + prodId);
         setProductInfo(data.data);
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     getProducts();
-  },[prodId]);
+  }, [prodId]);
 
   return (
     <div className="container">

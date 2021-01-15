@@ -1,8 +1,13 @@
-let items = JSON.parse( localStorage.getItem('items') || '[]');
-export const initialState = {
-  cartCount: items.length,
-  subTotal: 0,
-  items
+const storageItems = localStorage.getItem("cart")
+  ? JSON.parse(localStorage.getItem("cart"))
+  : [];
+
+export let initialState = {
+  items: storageItems || [],
+  // subTotal: storageItems
+  //   .reduce((acc, item) => acc + item.price * item.pQty, 0)
+  //   .toFixed(2),
+  // cartCount: storageItems.length,
 };
 
 export const cartReducer = (state, action) => {
@@ -18,46 +23,21 @@ export const cartReducer = (state, action) => {
         payload: action.payload,
       };
     case "INCREASE":
-      let item =
-        state.items[
-          state.items.findIndex((item) => item.id === action.payload.id)
-        ];
-
-      if (item.pQty < 5) {
-        item.pQty++;
-        item.totalPrice = (item.pQty * item.price).toFixed(2);
-      } else {
-        item.pQty = 5;
-      }
       return {
         ...state,
         payload: action.payload,
       };
     case "DECREASE":
-      // state.items[
-      //   state.items.findIndex((item) => item.id === action.payload.id)
-      // ].pQty--;
-
-      let item1 =
-        state.items[
-          state.items.findIndex((item) => item.id === action.payload.id)
-        ];
-
-      if (item1.pQty > 1) {
-        item1.pQty--;
-        item1.totalPrice = (item1.pQty * item1.price).toFixed(2);
-        console.log(item1);
-      } else {
-        item1.pQty = 1;
-      }
       return {
         ...state,
-        items: state.items,
+        payload: action.payload,
+      };
+    case "CLEAR_CART":
+      return {
+        items: [],
       };
 
     default:
       return state;
   }
 };
-
-// export default cartReducer;

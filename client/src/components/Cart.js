@@ -4,31 +4,31 @@ import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
 import { StateValue } from "./contextAPI/cartContext";
 
-
-
 function Cart() {
-  const [{ cartCount, items }, dispatch] = StateValue();
+  let { state, dispatch } = StateValue();
 
-  // useEffect(()=>{
-  //   console.log('items',items);
-  // },[items])
-  // let stotal = 0;
-  // if (items.length > 0) {
-  //   items.forEach((item) => {
-  //     // stotal = stotal * 1;
-  //     item.totalPrice = item.totalPrice * 1;
-  //     stotal = stotal + item.totalPrice;
-  //   });
-  // } else {
-  //   stotal = 0;
-  // }
+  const subTotal = state.items
+    .reduce((acc, item) => acc + item.price * item.pQty, 0)
+    .toFixed(2);
+  useEffect(() => {
+    console.log(state.items);
+  }, [state.items]);
+  const clearCart = ()=>{
+    dispatch({
+      type: "CLEAR_CART",
+    });
+  }
   return (
     <div className="container">
       <div className="cart">
-        <h1>({cartCount}) Items in Cart</h1>
+       
         <div className="cart__content">
           <ul>
-            {items.map((item) => (
+            <div className="cart__desc">
+              <h1>({state.items.length}) Items in Cart</h1>
+              <button className="btn clear" onClick={clearCart}>clear</button>
+            </div>
+            {state.items.map((item) => (
               <CartItem
                 key={item.id}
                 id={item.id}
@@ -40,11 +40,13 @@ function Cart() {
               />
             ))}
             <div className="cart__item">
-              <Link to="/">Continue Shoping</Link>
-            <Link to="/checkout" className="btn">
-              checkout
-             </Link> 
-              <p>Subtotal: 234234</p>
+              <Link to="/" className="btn">
+                Continue Shoping
+              </Link>
+              <Link to="/checkout" className="btn">
+                checkout
+              </Link>
+              <p>Subtotal: {subTotal}</p>
             </div>
           </ul>
         </div>

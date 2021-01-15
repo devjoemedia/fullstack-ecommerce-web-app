@@ -4,7 +4,10 @@ import { StateValue } from "./contextAPI/cartContext";
 import "./Header.css";
 
 export default function Header() {
-  const { state } = StateValue();
+  const {
+    state: { items, cartCount },
+    dispatch,
+  } = StateValue();
 
   return (
     <div>
@@ -25,7 +28,7 @@ export default function Header() {
                 {" "}
                 <i className="fas fa-shopping-cart"></i>
               </span>
-              <span> {state.cartCount} Items</span>
+              <span> {items.length} Items</span>
             </Link>
             <div className="white-list">
               <span>

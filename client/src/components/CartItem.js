@@ -1,52 +1,59 @@
-import React, { useState } from "react";
+import React from "react";
 import { StateValue } from "./contextAPI/cartContext";
 
-function CartItem({ name, price, pQty, id, totalPrice,image }) {
-  const [qty, setQty] = useState(1);
-  const [state, dispatch] = StateValue();
+function CartItem({ name, price, pQty, id, totalPrice, image }) {
+  const {
+    state: { items },
+    dispatch,
+  } = StateValue();
   let prodId = id;
+
   const removeFromCart = () => {
-    let cartItem ; 
-    cartItem = state.items.filter((product) => product.id === prodId);
-    
+    let cartItem;
+    cartItem = items.filter((product) => product.id === prodId);
+
     if (cartItem) {
-      let index = state.items.findIndex(cartItem => cartItem.id = prodId)
+      let index = items.findIndex((cartItem) => cartItem.id === prodId);
       dispatch({
         type: "REMOVE_ITEM",
         payload: {
-          cartCount: (state.cartCount <= 0 ? state.cartCount = 0 :  state.cartCount -= 1),
-          items: state.items.splice(index,1),
-        }, 
+          items: items.splice(index, 1),
+        },
       });
-      console.log('Item removed from cart!');
+      console.log("Item removed from cart!");
     }
-
-    console.log(state);
   };
   const incQty = () => {
-    
+    let item = items[items.findIndex((item) => item.id === id)];
+    let index = items.findIndex((item) => item.id === id);
+
+    item.pQty < 5 ? item.pQty+=1 : (item.pQty = 5);
+    item.totalPrice = (item.pQty * item.price).toFixed(2);
+
     dispatch({
-      type: 'INCREASE',
+      type: "INCREASE",
       payload: {
         id,
-        cartCount: state.cartCount,
-        items: state.items
-      }
-    })
-    
-    console.log(state.items);
+        items: items.splice(index,1, item),
+      },
+    });
   };
   const decQty = () => {
+    let item = items[items.findIndex((item) => item.id === id)];
+    let index = items.findIndex((item) => item.id === id);
+
+    item.pQty > 1 ? item.pQty-=1 : (item.pQty = 1);
+    item.totalPrice = (item.pQty * item.price).toFixed(2);
+
     dispatch({
-      type: 'DECREASE',
+      type: "INCREASE",
       payload: {
         id,
-        cartCount: state.cartCount,
-        items: state.cartItems
-      }
-    })
+        items: items.splice(index,1, item),
+      },
+    });
   };
-  
+
   return (
     <li className="cart__item">
       <div className="cart__item--info">
@@ -61,11 +68,13 @@ function CartItem({ name, price, pQty, id, totalPrice,image }) {
         <button className="inc" onClick={incQty}>
           +
         </button>
-      </div>  
+      </div>
       <div className="cart__item--price">
         <h3>{totalPrice}</h3>
       </div>
-      <span onClick={removeFromCart}>X</span>
+      <span onClick={removeFromCart} className="remove__item">
+        X
+      </span>
     </li>
   );
 }

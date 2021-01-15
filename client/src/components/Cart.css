@@ -8,11 +8,8 @@
   display: flex;
 }
 .cart__content ul {
-  flex: 0.6;
+  flex: 0.7;
   margin-right: 20px;
-}
-.checkout {
-  flex: 0.4;
 }
 
 .cart__item {
@@ -55,4 +52,25 @@
   border: none;
   color: var(--white-color);
   background: #444;
+}
+
+.remove__item {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cart .btn {
+  padding: .8rem 1.3rem;
+  color: #fff;
+  outline: none;
+  border: none;
+  background: #444;
+  margin-right: 2rem;
+}
+
+.cart__desc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }

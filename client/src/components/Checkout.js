@@ -2,10 +2,19 @@ import React from "react";
 import "./Checkout.css";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "./axios";
+import { StateValue } from "./contextAPI/cartContext";
 
 const stripePromise = loadStripe("pk_test_HP8QIZl7706wrnbQNmaHrNaR00nsrB4qjc");
 
 function CheckoutForm() {
+  const {
+    state: { items },
+    dispatch,
+  } = StateValue();
+  let subTotal = items
+    .reduce((acc, item) => acc + item.price * item.pQty, 0)
+    .toFixed(2);
+    
   // e.preventDefault();
   const handleClick = async (event) => {
     // Get Stripe.js instance
@@ -13,7 +22,7 @@ function CheckoutForm() {
 
     // Call your backend to create the Checkout Session
     const { data: session } = await axios.post("/pay-with-card", {
-      amount: 24 * 100,
+      amount: subTotal * 100,
     });
     // Reidrect to stripe hosted form
     const result = await stripe.redirectToCheckout({
@@ -31,13 +40,16 @@ function CheckoutForm() {
         <div className="checkout__payWith--momo">
           <p>currently we only accept MTN mobile money!</p>
           <p>To pay with momo just click the button and follow the steps</p>
-          <button disabled role="link" className="btn" >
+          <button disabled role="link" className="btn">
             pay with momo
           </button>
-          <span>note we are now working on payment with momo please use the pay with card option below thanks</span>
+          <span>
+            note we are now working on payment with momo please use the pay with
+            card option below thanks
+          </span>
         </div>
         <div className="checkout__payWith--card">
-          <p>click here to pay with yor credit card</p>  
+          <p>click here to pay with yor credit card</p>
           <button role="link" className="btn" onClick={handleClick}>
             pay with card
           </button>
