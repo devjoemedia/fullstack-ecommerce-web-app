@@ -14,7 +14,7 @@ function CheckoutForm() {
   let subTotal = items
     .reduce((acc, item) => acc + item.price * item.pQty, 0)
     .toFixed(2);
-    
+
   // e.preventDefault();
   const handleClick = async (event) => {
     // Get Stripe.js instance
@@ -23,12 +23,16 @@ function CheckoutForm() {
     // Call your backend to create the Checkout Session
     const { data: session } = await axios.post("/pay-with-card", {
       amount: subTotal * 100,
+      items: items,
     });
     // Reidrect to stripe hosted form
+    console.log(session);
     const result = await stripe.redirectToCheckout({
       sessionId: session.id,
     });
-    // handle errors if any
+   
+    
+    // // handle errors if any
     if (result.error) {
       console.log(result.error.message);
     }

@@ -1,0 +1,10 @@
+.pagination ul {
+  margin: 0 10px ;
+}
+
+.pagination ul li {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: 1px solid lightgray;
+}

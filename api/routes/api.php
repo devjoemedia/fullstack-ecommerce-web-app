@@ -20,6 +20,8 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::patch('/product/{id}', [ProductController::class, 'update']);
 Route::delete('/product/{id}', [ProductController::class, 'destroy']);
 
+Route::get('/get-orders', [PaymentController::class, 'getOrders']);
+
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
 

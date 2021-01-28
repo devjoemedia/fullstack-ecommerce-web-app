@@ -2,15 +2,25 @@ import React,{useState, useEffect} from "react";
 import Item from "./Item";
 import "./Products.css";
 import axios from './axios';
+import Pagination from "./Pagination";
+import { StateValue } from "./contextAPI/cartContext";
 
 function Products() {
-  const [products, setProducts]= useState([]);
-  
+  // const [products, setProducts]= useState([]);
+  let {
+    state,
+    dispatch,
+  } = StateValue();
 useEffect(()=>{
   const getProducts = async ()=> {
     try {
       const {data} = await axios.get('/products');
-      setProducts(data.data);
+      // setProducts(data.data);
+      dispatch({
+        type: 'SET_PRODUCTS',
+        products: data.data
+
+      })
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +47,7 @@ useEffect(()=>{
         </span>
       </nav>
       <div className="products-inner">
-        {products?.map((product) => (
+        {state.products.map((product) => (
           <Item
             key={product.id}
             name={product.name}
@@ -48,6 +58,7 @@ useEffect(()=>{
           />
         ))}
       </div>
+      <Pagination />
     </div>
   );
 }

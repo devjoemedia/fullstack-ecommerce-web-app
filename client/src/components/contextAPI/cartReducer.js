@@ -4,14 +4,16 @@ const storageItems = localStorage.getItem("cart")
 
 export let initialState = {
   items: storageItems || [],
-  // subTotal: storageItems
-  //   .reduce((acc, item) => acc + item.price * item.pQty, 0)
-  //   .toFixed(2),
-  // cartCount: storageItems.length,
+  products: []
 };
 
 export const cartReducer = (state, action) => {
   switch (action.type) {
+    case 'SET_PRODUCTS':
+      return {
+        ...state,
+        products: action.products
+      }
     case "ADD_ITEM":
       return {
         ...state,

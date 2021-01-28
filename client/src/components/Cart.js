@@ -13,20 +13,21 @@ function Cart() {
   useEffect(() => {
     console.log(state.items);
   }, [state.items]);
-  const clearCart = ()=>{
+  const clearCart = () => {
     dispatch({
       type: "CLEAR_CART",
     });
-  }
+  };
   return (
     <div className="container">
       <div className="cart">
-       
         <div className="cart__content">
           <ul>
             <div className="cart__desc">
               <h1>({state.items.length}) Items in Cart</h1>
-              <button className="btn clear" onClick={clearCart}>clear</button>
+              <button className="btn clear" onClick={clearCart}>
+                clear
+              </button>
             </div>
             {state.items.map((item) => (
               <CartItem
